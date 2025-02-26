@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { paragon } from "@useparagon/connect";
 
 export const NotionFilepicker = (props: { toggle: () => void }) => {
   const [pickerState, setPickerState] = useState<{ pages: any, pickedPage: any }>({ pages: [], pickedPage: {} });
@@ -85,10 +86,20 @@ export const NotionFilepicker = (props: { toggle: () => void }) => {
         })
         }
       </div>
-      <button className="rounded-md text-stone-50 bg-stone-700 p-2 font-semibold hover:bg-stone-800"
-        onClick={() => sendSummary(pickerState.pickedPage.id)}
-        disabled={Object.keys(pickerState.pickedPage).length === 0 ? true : false}>
-        Send Demo Summary
-      </button>
+      <div className="flex space-x-2">
+        <button className="rounded-md text-stone-50 bg-stone-700 p-2 font-semibold hover:bg-stone-800"
+          onClick={() => sendSummary(pickerState.pickedPage.id)}
+          disabled={Object.keys(pickerState.pickedPage).length === 0 ? true : false}>
+          Send Demo Summary
+        </button>
+        <button className="rounded-md text-stone-50 bg-red-700 p-2 font-semibold hover:bg-red-800"
+          onClick={() => {
+            paragon.uninstallIntegration("notion", {}).then(() => {
+              props.toggle();
+            });
+          }}>
+          Disconnect
+        </button>
+      </div>
     </div>)
 }

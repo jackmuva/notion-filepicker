@@ -60,10 +60,7 @@ export default function Home() {
     setPicker((prev) => (!prev));
   }
 
-  console.log(user);
-  console.log(sessionStorage.getItem("jwt"));
-  console.log(paragonUser)
-
+  console.log(paragonUser.integrations)
   return (
     <div>
       <main className="flex flex-col gap-8 row-start-2 items-center w-screen min-h-screen justify-center">
