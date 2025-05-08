@@ -74,10 +74,10 @@ export const NotionFilepicker = (props: { toggle: () => void }) => {
               onClick={() => selectPage(page)}>
               <Image
                 className=""
-                src="/page-blank.png"
+                src="/notion-logo.png"
                 alt="Page Icon"
-                width={20}
-                height={3}
+                width={25}
+                height={25}
                 priority
               />
               <div className="truncate ">{page.properties.title.title[0].text.content}</div>
